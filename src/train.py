@@ -9,7 +9,7 @@ import torch.optim as optim
 from sklearn.metrics import classification_report
 
 from dataset import get_dataloaders, CLASS_NAMES
-from model import BaselineModel
+from model import CNNModel
 
 BATCH_SIZE = 64
 EPOCHS = 5
@@ -54,7 +54,7 @@ def evaluate(model, loader, criterion):
 def main():
     train_loader, val_loader, test_loader, _ = get_dataloaders(batch_size=BATCH_SIZE)
 
-    model = BaselineModel()
+    model = CNNModel()
     print(model)
     print(f"Parameters: {sum(p.numel() for p in model.parameters()):,}\n")
 
