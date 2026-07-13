@@ -69,6 +69,8 @@ def main():
               f"val_loss={val_loss:.4f} val_acc={val_acc:.3f}")
 
     test_loss, test_acc = evaluate(model, test_loader, criterion)
+    torch.save(model.state_dict(), "../models/cnn_model.pt")
+    print("Model saved to models/cnn_model.pt")
     print(f"\nTest accuracy: {test_acc:.3%}")
 
     all_preds, all_labels = [], []
