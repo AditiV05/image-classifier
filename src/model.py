@@ -40,8 +40,9 @@ class CNNModel(nn.Module):
 
         # --- Decision layer: same idea as the baseline, but fed real features ---
         self.classifier = nn.Sequential(
-            nn.Flatten(),                  # 32 channels x 7 x 7 -> flat vector
-            nn.Linear(32 * 7 * 7, 10)      # 1568 inputs -> 10 class scores
+            nn.Flatten(),
+            nn.Dropout(p=0.3),
+            nn.Linear(32 * 7 * 7, 10)          # 1568 inputs -> 10 class scores
         )
 
     def forward(self, x):

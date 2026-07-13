@@ -12,7 +12,7 @@ from dataset import get_dataloaders, CLASS_NAMES
 from model import CNNModel
 
 BATCH_SIZE = 64
-EPOCHS = 5
+EPOCHS = 10
 LR = 0.01
 
 
@@ -59,7 +59,7 @@ def main():
     print(f"Parameters: {sum(p.numel() for p in model.parameters()):,}\n")
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=LR)
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     for epoch in range(1, EPOCHS + 1):
         train_loss, train_acc = train_epoch(model, train_loader, criterion, optimizer)
